@@ -1,0 +1,35 @@
+# Eureka-server config
+spring:
+  application:
+    name: myava-eureka-consumer
+server: 
+  port: 8081
+  servlet:
+    context-path: /consumer
+eureka:
+  instance:
+    #prefer-ip-address: true
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+  client:
+    # 是否注册实例到eureka注册中心，默认true
+    register-with-eureka: false
+    fetch-registry: true
+    registry-fetch-interval-seconds: 30
+    service-url:
+      defaultZone: http://eureka-server1:7001/eureka/,http://eureka-server2:7002/eureka/,http://eureka-server3:7003/eureka/
+
+# 配置服务负载均衡策略
+#myava-eureka-provider.ribbon.NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+feign.hystrix.enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+      

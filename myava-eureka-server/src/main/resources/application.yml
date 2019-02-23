@@ -1,0 +1,83 @@
+# Eureka-server config
+spring:
+  application:
+    name: myava-eureka-registry
+  security: 
+    user:
+      name: admin
+      password: 123456
+# Eureka集群配置，配置3个节点
+--- # 使用三个连字符分隔多个文件
+spring: 
+  profiles: server1
+server: 
+  port: 7001
+eureka:
+  instance:
+#    prefer-ip-address: true
+    hostname: eureka-server1
+  server:
+    # 集群节点间的读数据连接超时时间，默认200
+    peer-node-read-timeout-ms: 60000
+    # 自我保护模式，默认true，该模式不能剔除失效节点，开发测试环境关闭
+    enable-self-preservation: false
+    # 清理间隔，默认60*1000
+    eviction-interval-timer-in-ms: 10000
+  # 基于CONFIG配置集群
+  client: 
+#    use-dns-for-fetching-service-urls: false
+#    region: region1 # 默认us-east-1
+#    prefer-same-zone-eureka: true
+#    availability-zones:
+#      region1: zone1
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+#      zone1: http://eureka-server2:7002/eureka/,http://eureka-server3:7003/eureka/
+      defaultZone: http://eureka-server2:7002/eureka/,http://eureka-server3:7003/eureka/
+#  # 基于DNS的配置集群
+#  client:
+#    # 开启DNS方式获取serviceUrl，默认为false
+#    use-dns-for-fetching-service-urls: true
+#    # DNS域名，获取其他信息将以该域名为根域名
+#    eureka-server-d-n-s-name: myava.com
+#    # 当前应用所在区域，默认为us-east-1
+#    region: region1
+#    # eureka服务根目录
+#    eureka-server-u-r-l-context: eureka
+---
+spring:
+  profiles: server2
+server: 
+  port: 7002
+eureka:
+  instance:
+#    prefer-ip-address: true
+    hostname: eureka-server2
+  server:
+    peer-node-read-timeout-ms: 60000
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 60000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-server1:7001/eureka/,http://eureka-server3:7003/eureka/
+---
+spring:
+  profiles: server3
+server: 
+  port: 7003
+eureka:
+  instance:
+#    prefer-ip-address: true
+    hostname: eureka-server3
+  server:
+    peer-node-read-timeout-ms: 60000  
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 60000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-server1:7001/eureka/,http://eureka-server2:7002/eureka/

@@ -1,0 +1,67 @@
+# Eureka-server config
+spring:
+  application:
+    name: myava-eureka-provider
+
+# 定义注册中心地址
+# http://${eureka.instance.hostname}:${server.port}/eureka/ # 注册中心没配置安全认证
+# http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+myava.service-url.defaultZone: http://eureka-server1:7001/eureka/,http://eureka-server2:7002/eureka/,http://eureka-server3:7003/eureka/
+
+---
+spring:
+  profiles: service1
+server: 
+  port: 9001
+  servlet:
+    context-path: /service
+eureka:
+  instance:
+#    prefer-ip-address: true
+    hostname: eureka-server1
+    # 续约心跳时间间隔，默认30
+    lease-renewal-interval-in-seconds: 30
+    # 续约到期时间，默认90
+    lease-expiration-duration-in-seconds: 90
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url: 
+      defaultZone: ${myava.service-url.defaultZone}
+---
+spring:
+  profiles: service2
+server: 
+  port: 9002
+  servlet:
+    context-path: /service
+eureka:
+  instance:
+#    prefer-ip-address: true
+    hostname: eureka-server2
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${myava.service-url.defaultZone}
+---
+spring:
+  profiles: service3
+server: 
+  port: 9003
+  servlet:
+    context-path: /service
+eureka:
+  instance:
+#    prefer-ip-address: true
+    hostname: eureka-server3
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${myava.service-url.defaultZone}
+    

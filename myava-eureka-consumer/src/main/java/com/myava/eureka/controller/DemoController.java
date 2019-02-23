@@ -17,13 +17,13 @@ public class DemoController {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	private static final String URL = "http://myava-eureka-provider/service/demo/getInfo";
+	private static final String URL = "http://myava-eureka-provider/service/demo/queryInformation";
 	
 	@Autowired
 	private DemoFeignClient demoFeignClient;
 	
-	@GetMapping("/demo/getInfo")
-	public String getInfo() {
+	@GetMapping("/demo/queryInformation")
+	public String queryInformation() {
 		// 通过restTemplate访问
 		String restResp = restTemplate.getForObject(URL, String.class);
 		System.out.println("restResp: " + restTemplate.getForObject(URL, String.class));
@@ -38,5 +38,5 @@ public class DemoController {
 		// Swagger返回泛型测试
 		return RespResult.success(new Demo("ABC", "This is abc."));
 	}
-
+	
 }

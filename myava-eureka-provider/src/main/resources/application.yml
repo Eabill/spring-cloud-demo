@@ -2,6 +2,13 @@
 spring:
   application:
     name: myava-eureka-provider
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: myava-config-server
+      profile: dev
+      label: master
 
 # 定义注册中心地址
 # http://${eureka.instance.hostname}:${server.port}/eureka/ # 注册中心没配置安全认证

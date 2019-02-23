@@ -12,9 +12,19 @@ public class DemoService {
 	@Value("${server.port}")
 	private String port;
 	
-	@GetMapping(value = "/demo/getInfo")
-	public String getInfo() {
+	@Value("${spring.redis.host}")
+	private String redisHost;
+	@Value("${spring.redis.port}")
+	private String redisPort;
+	
+	@GetMapping(value = "/demo/queryInformation")
+	public String queryInformation() {
 		return "service invoke success, " + hostname + ": " + port;
+	}
+	
+	@GetMapping(value = "/demo/redisConfig")
+	public String redisConfig() {
+		return redisHost + ":" + redisPort;
 	}
 
 }

@@ -1,0 +1,19 @@
+# config-server config
+spring:
+  application:
+    name: myava-gateway-client
+server: 
+  port: 8080
+#eureka:
+#  instance:
+#    #prefer-ip-address: true
+#    hostname: localhost
+#    lease-renewal-interval-in-seconds: 30
+#    lease-expiration-duration-in-seconds: 90
+#  client:
+#    # 是否注册实例到eureka注册中心，默认true
+#    register-with-eureka: true
+#    fetch-registry: true
+#    registry-fetch-interval-seconds: 30
+#    service-url:
+#      defaultZone: http://eureka-server1:7001/eureka/,http://eureka-server2:7002/eureka/,http://eureka-server3:7003/eureka/

@@ -1,10 +1,10 @@
-package com.myava.eureka.feign;
+package com.myava.eureka.consumer.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.myava.eureka.feign.fallback.DemoFeignClientFallback;
-import com.myava.eureka.feign.fallback.DemoFeignClientFallbackFactory;
+import com.myava.eureka.consumer.feign.fallback.DemoFeignClientFallback;
+import com.myava.eureka.consumer.feign.fallback.DemoFeignClientFallbackFactory;
 
 @SuppressWarnings("all")
 @FeignClient(name = "myava-eureka-provider", 
@@ -12,7 +12,7 @@ import com.myava.eureka.feign.fallback.DemoFeignClientFallbackFactory;
 	fallbackFactory = DemoFeignClientFallbackFactory.class)
 public interface DemoFeignClient {
 	
-	@GetMapping("/service/demo/getInfo")
-	String getInfo(); 
+	@GetMapping("/service/demo/getInformation")
+	String getInformation(); 
 
 }

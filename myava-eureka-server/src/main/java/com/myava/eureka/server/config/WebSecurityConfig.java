@@ -1,4 +1,4 @@
-package com.myava.eureka.config;
+package com.myava.eureka.server.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

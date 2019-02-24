@@ -1,4 +1,4 @@
-package com.myava.eureka.feign;
+package com.myava.eureka.consumer.feign;
 
 public interface FeignService {
     

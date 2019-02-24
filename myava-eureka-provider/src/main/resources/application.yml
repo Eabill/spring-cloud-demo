@@ -2,6 +2,9 @@
 spring:
   application:
     name: myava-eureka-provider
+  devtools:
+    restart:
+      enabled: true # 热部署开关，默认true
   cloud:
     config:
       discovery:
@@ -9,6 +12,7 @@ spring:
         service-id: myava-config-server
       profile: dev
       label: master
+      name: ${spring.application.name} # 默认应用名称
 
 # 定义注册中心地址
 # http://${eureka.instance.hostname}:${server.port}/eureka/ # 注册中心没配置安全认证

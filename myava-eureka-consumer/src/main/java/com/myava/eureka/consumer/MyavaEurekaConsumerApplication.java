@@ -1,4 +1,4 @@
-package com.myava.eureka;
+package com.myava.eureka.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,13 +1,13 @@
-package com.myava.eureka.controller;
+package com.myava.eureka.consumer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.myava.eureka.dto.Demo;
-import com.myava.eureka.dto.RespResult;
-import com.myava.eureka.feign.DemoFeignClient;
+import com.myava.eureka.consumer.dto.Demo;
+import com.myava.eureka.consumer.dto.RespResult;
+import com.myava.eureka.consumer.feign.DemoFeignClient;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -28,7 +28,7 @@ public class DemoController {
 		String restResp = restTemplate.getForObject(URL, String.class);
 		System.out.println("restResp: " + restTemplate.getForObject(URL, String.class));
 		// 通过feign client访问
-		System.out.println("feignResp: " + demoFeignClient.getInfo());
+		System.out.println("feignResp: " + demoFeignClient.getInformation());
 		return restResp;
 	}
 	

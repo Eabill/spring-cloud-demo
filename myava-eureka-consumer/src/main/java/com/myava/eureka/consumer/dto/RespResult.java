@@ -1,4 +1,4 @@
-package com.myava.eureka.dto;
+package com.myava.eureka.consumer.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

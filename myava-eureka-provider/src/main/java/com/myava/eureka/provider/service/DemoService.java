@@ -1,6 +1,10 @@
-package com.myava.eureka.service;
+package com.myava.eureka.provider.service;
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +20,8 @@ public class DemoService {
 	private String redisHost;
 	@Value("${spring.redis.port}")
 	private String redisPort;
+	@Autowired
+	private RedisTemplate<String, Object> redisTemplate;
 	
 	@GetMapping(value = "/demo/queryInformation")
 	public String queryInformation() {
@@ -25,6 +31,12 @@ public class DemoService {
 	@GetMapping(value = "/demo/redisConfig")
 	public String redisConfig() {
 		return redisHost + ":" + redisPort;
+	}
+	
+	@GetMapping(value = "/demo/getValueFromRedis")
+	public String getValueFromRedis(String key) {
+		redisTemplate.opsForValue().set(key, key + ":" + UUID.randomUUID());
+		return (String) redisTemplate.opsForValue().get(key);
 	}
 
 }

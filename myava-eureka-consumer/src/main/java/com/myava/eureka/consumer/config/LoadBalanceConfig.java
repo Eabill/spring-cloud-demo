@@ -1,4 +1,4 @@
-package com.myava.eureka.config;
+package com.myava.eureka.consumer.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

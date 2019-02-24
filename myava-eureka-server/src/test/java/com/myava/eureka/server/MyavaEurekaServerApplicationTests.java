@@ -1,4 +1,4 @@
-package com.myava.eureka;
+package com.myava.eureka.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MyavaEurekaProviderApplicationTests {
+public class MyavaEurekaServerApplicationTests {
 
 	@Test
 	public void contextLoads() {

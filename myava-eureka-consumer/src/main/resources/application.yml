@@ -2,13 +2,6 @@
 spring:
   application:
     name: myava-eureka-consumer
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: myava-config-server
-      profile: dev
-      label: master
 server: 
   port: 8081
   servlet:

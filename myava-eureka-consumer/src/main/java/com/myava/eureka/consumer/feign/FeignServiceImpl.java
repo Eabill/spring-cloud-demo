@@ -1,4 +1,4 @@
-package com.myava.eureka.feign;
+package com.myava.eureka.consumer.feign;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;

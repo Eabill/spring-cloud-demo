@@ -1,4 +1,4 @@
-package com.myava.configserver;
+package com.myava.gateway.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,11 +7,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MyavaConfigServerApplicationTests {
+public class MyavaGatewayClientApplicationTests {
 
 	@Test
 	public void contextLoads() {
 	}
-
+	
 }
 

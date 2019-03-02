@@ -24,12 +24,12 @@ spring:
   profiles: service1
 server: 
   port: 9001
-  servlet:
-    context-path: /service
+#  servlet:
+#    context-path: /service
 eureka:
   instance:
-#    prefer-ip-address: true
-    hostname: eureka-server1
+    prefer-ip-address: true
+    #hostname: eureka-server1
     # 续约心跳时间间隔，默认30
     lease-renewal-interval-in-seconds: 30
     # 续约到期时间，默认90
@@ -44,12 +44,12 @@ spring:
   profiles: service2
 server: 
   port: 9002
-  servlet:
-    context-path: /service
+#  servlet:
+#    context-path: /service
 eureka:
   instance:
-#    prefer-ip-address: true
-    hostname: eureka-server2
+    prefer-ip-address: true
+    #hostname: eureka-server2
     lease-renewal-interval-in-seconds: 30
     lease-expiration-duration-in-seconds: 90
   client:
@@ -62,12 +62,12 @@ spring:
   profiles: service3
 server: 
   port: 9003
-  servlet:
-    context-path: /service
+#  servlet:
+#    context-path: /service
 eureka:
   instance:
-#    prefer-ip-address: true
-    hostname: eureka-server3
+    prefer-ip-address: true
+    #hostname: eureka-server3
     lease-renewal-interval-in-seconds: 30
     lease-expiration-duration-in-seconds: 90
   client:

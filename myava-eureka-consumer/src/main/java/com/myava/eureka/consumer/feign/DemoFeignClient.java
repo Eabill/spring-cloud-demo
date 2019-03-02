@@ -12,7 +12,7 @@ import com.myava.eureka.consumer.feign.fallback.DemoFeignClientFallbackFactory;
 	fallbackFactory = DemoFeignClientFallbackFactory.class)
 public interface DemoFeignClient {
 	
-	@GetMapping("/service/demo/getInformation")
+	@GetMapping("/demo/getInformation")
 	String getInformation(); 
 
 }

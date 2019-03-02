@@ -1,4 +1,4 @@
-package com.myava.eureka.provider.service;
+package com.myava.eureka.provider.controller;
 
 import java.util.UUID;
 
@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DemoService {
+public class ProviderDemoController {
 	
-	@Value("${eureka.instance.hostname}")
-	private String hostname;
 	@Value("${server.port}")
 	private String port;
 	
@@ -25,7 +23,14 @@ public class DemoService {
 	
 	@GetMapping(value = "/demo/queryInformation")
 	public String queryInformation() {
-		return "service invoke success, " + hostname + ": " + port;
+		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		return "service invoke success, port: " + port;
 	}
 	
 	@GetMapping(value = "/demo/redisConfig")
@@ -37,6 +42,11 @@ public class DemoService {
 	public String getValueFromRedis(String key) {
 		redisTemplate.opsForValue().set(key, key + ":" + UUID.randomUUID());
 		return (String) redisTemplate.opsForValue().get(key);
+	}
+	
+	@GetMapping(value = "/microservice/provider")
+	public String route() {
+		return "Myava-eureka-provider: " + UUID.randomUUID();
 	}
 
 }

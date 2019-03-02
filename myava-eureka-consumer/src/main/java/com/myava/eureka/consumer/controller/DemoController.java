@@ -17,7 +17,7 @@ public class DemoController {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	private static final String URL = "http://myava-eureka-provider/service/demo/queryInformation";
+	private static final String URL = "http://myava-eureka-provider/demo/queryInformation";
 	
 	@Autowired
 	private DemoFeignClient demoFeignClient;

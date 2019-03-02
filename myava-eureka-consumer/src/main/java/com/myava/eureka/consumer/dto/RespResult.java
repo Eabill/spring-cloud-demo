@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "响应结果")
+@ApiModel
 public class RespResult<T> {
 	
 	private static final String MSG_SUCCESS = "操作成功";

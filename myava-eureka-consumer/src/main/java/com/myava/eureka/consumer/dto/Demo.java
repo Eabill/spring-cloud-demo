@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "Demo")
+@ApiModel
 public class Demo {
 	
 	@ApiModelProperty(value = "名称", required = true)

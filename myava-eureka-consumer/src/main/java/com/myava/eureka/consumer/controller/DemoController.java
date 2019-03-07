@@ -25,11 +25,10 @@ public class DemoController {
 	@GetMapping("/demo/queryInformation")
 	public String queryInformation() {
 		// 通过restTemplate访问
-		String restResp = restTemplate.getForObject(URL, String.class);
 		System.out.println("restResp: " + restTemplate.getForObject(URL, String.class));
 		// 通过feign client访问
 		System.out.println("feignResp: " + demoFeignClient.getInformation());
-		return restResp;
+		return "success";
 	}
 	
 	@ApiOperation(value = "获取信息")

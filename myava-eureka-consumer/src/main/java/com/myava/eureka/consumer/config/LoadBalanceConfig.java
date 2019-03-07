@@ -3,6 +3,7 @@ package com.myava.eureka.consumer.config;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import com.netflix.loadbalancer.AvailabilityFilteringRule;
@@ -28,6 +29,11 @@ public class LoadBalanceConfig {
 	@Bean
 	@LoadBalanced
 	public RestTemplate getRestTemplate() {
+		// 直接使用ribbon.ReadTimeout和ribbon.ConnectTimeout配置无效
+//		HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+//		httpRequestFactory.setReadTimeout(3000);
+//		httpRequestFactory.setConnectTimeout(1000);
+//		return new RestTemplate(httpRequestFactory);
 		return new RestTemplate();
 	}
 	

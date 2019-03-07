@@ -24,6 +24,18 @@ eureka:
 #myava-eureka-provider.ribbon.NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
 feign.hystrix.enabled: true
+# Ribbon超时时间和Hystrix超时时间决定Feign超时时间
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 1000
+#  MaxAutoRetries: 0
+#  MaxAutoRetriesNextServer: 1
+#  OkToRetryOnAllOperations: false
+hystrix.command.default.execution:
+  isolation:
+    thread.timeoutInMilliseconds: 8000 #默认是1秒，大于ReadTimeout+ConnectTimeout
+  timeout.enabled: true
+
 management:
   endpoints:
     web:

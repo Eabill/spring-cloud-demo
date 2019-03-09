@@ -22,12 +22,17 @@ public class DemoController {
 	@Autowired
 	private DemoFeignClient demoFeignClient;
 	
-	@GetMapping("/demo/queryInformation")
+	@GetMapping("/demo/feign/queryInformation")
 	public String queryInformation() {
-		// 通过restTemplate访问
-		System.out.println("restResp: " + restTemplate.getForObject(URL, String.class));
 		// 通过feign client访问
 		System.out.println("feignResp: " + demoFeignClient.getInformation());
+		return "success";
+	}
+	
+	@GetMapping("/demo/rest/queryInformation")
+	public String restQueryInformation() {
+		// 通过restTemplate访问
+		System.out.println("restResp: " + restTemplate.getForObject(URL, String.class));
 		return "success";
 	}
 	

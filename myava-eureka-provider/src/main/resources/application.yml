@@ -13,6 +13,16 @@ spring:
       profile: dev
       label: master
       name: ${spring.application.name} # 默认应用名称
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    sender:
+      type: kafka
+    service:
+      name: ${spring.application.name}
+  kafka:
+    bootstrap-servers: localhost:9092
 
 # 定义注册中心地址
 # http://${eureka.instance.hostname}:${server.port}/eureka/ # 注册中心没配置安全认证

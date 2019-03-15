@@ -12,6 +12,18 @@ spring:
       name: ${spring.application.name}
   kafka:
     bootstrap-servers: localhost:9092
+    consumer:
+      group-id: ${spring.application.name}
+      enable-auto-commit: false
+      #auto-commit-interval: 5000MS
+      auto-offset-reset: latest
+      #max-poll-records: 500
+      properties:
+        max.poll.interval.ms: 300000
+#    listener:
+#      type: batch
+#      concurrency: 4
+#      ack-mode: manual-immediate
     
 server: 
   port: 8081

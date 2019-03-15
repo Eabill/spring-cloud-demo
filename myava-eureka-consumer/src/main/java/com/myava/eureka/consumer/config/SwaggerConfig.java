@@ -14,7 +14,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
-public class SwaggerConfig  implements WebMvcConfigurer {
+public class SwaggerConfig implements WebMvcConfigurer {
 	
 	@Value("${swagger.title:接口文档}")
 	private String title;

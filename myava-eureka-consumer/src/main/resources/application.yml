@@ -29,6 +29,13 @@ server:
   port: 8081
 #  servlet:
 #    context-path: /consumer
+
+swagger:
+  title: API接口文档
+  description: API描述
+  version: 1.0
+  base-package: com.myava.eureka.consumer.controller
+
 eureka:
   instance:
     prefer-ip-address: true

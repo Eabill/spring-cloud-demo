@@ -1,26 +1,44 @@
 package com.myava.eureka.consumer.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import lombok.Data;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@Data
 @Configuration
-public class SwaggerConfig implements WebMvcConfigurer {
+@EnableSwagger2
+@ConfigurationProperties(prefix = SwaggerConfig.PREFIX)
+public class SwaggerConfig {
 	
-	@Value("${swagger.title:接口文档}")
+	public static final String PREFIX = "swagger";
+	
+	/**
+	 * API接口包路径
+	 */
+	private String basePackage;
+	
+	/**
+	 * API标题
+	 */
 	private String title;
-	@Value("${swagger.desc:接口文档描述}")
-	private String desc;
-	@Value("${swagger.version:接口文档版本}")
+	
+	/**
+	 * API描述
+	 */
+	private String description;
+	
+	/**
+	 * 版本号
+	 */
 	private String version;
 	
 	@Bean
@@ -28,7 +46,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.myava"))
+                .apis(RequestHandlerSelectors.basePackage(basePackage))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -36,9 +54,8 @@ public class SwaggerConfig implements WebMvcConfigurer {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title(title)
-                .description(desc)
+                .description(description)
                 .version(version)
-                .contact(new Contact("Eabill", "", "Eabill@qq.com"))
                 .build();
     }
 

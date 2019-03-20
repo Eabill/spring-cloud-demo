@@ -1,0 +1,28 @@
+# consul config
+server: 
+  port: 8088
+
+spring:
+  application:
+    name: myava-cloud-consul
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        register: true
+        tags: version=1.0,author=Eabill
+        heartbeat.enabled: true 
+        health-check-path: /actuator/health
+        health-check-interval: 30s
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+      

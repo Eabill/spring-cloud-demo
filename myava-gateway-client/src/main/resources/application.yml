@@ -79,12 +79,3 @@ eureka:
     fetch-registry: true
     service-url: 
       defaultZone: http://eureka-server1:7001/eureka/,http://eureka-server2:7002/eureka/,http://eureka-server3:7003/eureka/          
-
-#eureka:
-#  instance:
-#    prefer-ip-address: true
-#  client:
-#    register-with-eureka: true
-#    fetch-registry: true
-#    service-url: 
-#      defaultZone: http://eureka-server1:7001/eureka/,http://eureka-server2:7002/eureka/,http://eureka-server3:7003/eureka/          

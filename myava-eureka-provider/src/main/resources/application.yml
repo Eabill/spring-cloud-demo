@@ -5,14 +5,15 @@ spring:
   devtools:
     restart:
       enabled: true # 热部署开关，默认true
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: myava-config-server
-      profile: dev
-      label: master
-      name: ${spring.application.name} # 默认应用名称
+  # 分布式配置中心信息
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: myava-config-server
+#      profile: dev
+#      label: master
+#      name: ${spring.application.name} # 默认应用名称
   sleuth:
     sampler:
       probability: 1.0
@@ -23,6 +24,27 @@ spring:
       name: ${spring.application.name}
   kafka:
     bootstrap-servers: localhost:9092
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 
+#    cluster:
+#      max-redirects: 3
+#      nodes:
+#      - 127.0.0.1:7001
+#      - 127.0.0.1:7002
+#      - 127.0.0.1:7003
+#      - 127.0.0.1:7004
+#      - 127.0.0.1:7005
+#      - 127.0.0.1:7006
+    lettuce:
+      pool:
+        max-active:  100 # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 100 # 连接池中的最大空闲连接
+        min-idle: 50 # 连接池中的最小空闲连接
+        max-wait: 6000 # 连接池最大阻塞等待时间（使用负值表示没有限制）
+    timeout: 2000
 
 # 定义注册中心地址
 # http://${eureka.instance.hostname}:${server.port}/eureka/ # 注册中心没配置安全认证

@@ -23,13 +23,12 @@ public class ProviderDemoController {
 	
 	@GetMapping(value = "/demo/queryInformation")
 	public String queryInformation() {
-		
+		System.out.println("server port: " + port);
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
 		return "service invoke success, port: " + port;
 	}
 	
